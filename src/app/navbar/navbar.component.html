@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <a style="font-size: 1.5rem" href="#">limbo</a>
+
+  <ul class="nav-menu" [class.active]="isActive">
+    <li class="nav-item" *ngFor="let link of links">
+      <a href="#" class="nav-link" (click)="navigateTo(link.path)">{{
+        link.linkName
+      }}</a>
+    </li>
+  </ul>
+
+  <input placeholder="Search" />
+
+  <div class="hamburger" (click)="toggleMenu()" [class.active]="isActive">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
+</nav>
