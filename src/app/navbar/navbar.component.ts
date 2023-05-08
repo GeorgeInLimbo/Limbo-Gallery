@@ -13,8 +13,8 @@ export class NavbarComponent {
     { linkName: 'Gallery', path: '.' },
     { linkName: 'Artists', path: '.' },
     { linkName: 'Events', path: '.' },
-    { linkName: 'Account', path: '.' },
     { linkName: 'Musings', path: '.' },
+    { linkName: 'Log In', path: '.' },
   ];
 
   constructor(private readonly router: Router) {}

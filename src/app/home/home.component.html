@@ -1,0 +1,23 @@
+<h2>Welcome to Limbo!</h2> 
+<section>
+    The online art gallery that showcases local Denver artists. This application allows you to more deeply connect with the local art scene by allowing you to purchase 
+    artwork from your favorite local artists, find art galleries and shows, 
+</section>
+
+<br>
+
+<div *ngIf="artist">
+    <h2>Featured Artist</h2>
+    <div>
+        <a href="#">
+            {{ artist.name }}
+        </a>
+        {{ artist.id }}
+    </div>
+    
+    <ul class="artist.works">
+        <li *ngFor="let work of artist.works">
+            <img src="{{ work }}" alt="Image by {{ artist.name }}"/>   
+        </li>
+    </ul>
+</div>
