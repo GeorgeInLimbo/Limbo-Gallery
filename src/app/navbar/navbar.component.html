@@ -1,9 +1,9 @@
 <nav class="navbar">
-  <a style="font-size: 1.5rem" href="#">limbo</a>
+  <a style="font-size: 1.5rem" routerLink="">limbo</a>
 
   <ul class="nav-menu" [class.active]="isActive">
     <li class="nav-item" *ngFor="let link of links">
-      <a href="#" class="nav-link" (click)="navigateTo(link.path)">{{
+      <a [routerLink]="[link.path]" class="nav-link">{{  
         link.linkName
       }}</a>
     </li>

@@ -10,11 +10,11 @@ export class NavbarComponent {
   isActive = false;
 
   links = [
-    { linkName: 'Gallery', path: '.' },
-    { linkName: 'Artists', path: '.' },
-    { linkName: 'Events', path: '.' },
-    { linkName: 'Musings', path: '.' },
-    { linkName: 'Log In', path: '.' },
+    { linkName: 'Gallery', path: '' },
+    { linkName: 'Artists', path: '' },
+    { linkName: 'Events', path: '' },
+    { linkName: 'Musings', path: '' },
+    { linkName: 'Log In/Create an Account', path: '/create-account' },
   ];
 
   constructor(private readonly router: Router) {}
