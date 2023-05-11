@@ -1,31 +1,52 @@
+
+<!-- TEMPLATE-DRIVEN FORM EXAMPLE -->
 <div class="container-fluid">
-    <h2>template-driven form</h2>
+    <h2>Sign-up</h2>
     <form #userForm="ngForm">
 
+        <!-- NAME -->
         <div class="form-group">
             <label>Name</label>
-            <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control" name="userName" [(ngModel)]="userModel.name">
+            <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" 
+                class="form-control" name="userName" [(ngModel)]="userModel.name" style="color: black;">
+            <small class="text-danger" [class.d-none]="name.valid || name.untouched">'Name' is a required field.</small> 
         </div>
 
+        <!-- EMAIL-->
         <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-control" name="email" [(ngModel)]="userModel.email">
+            <input type="email" required #email="ngModel" pattern="^\d{8}$" [class.is-invalid]="email.invalid && email.touched" 
+                class="form-control" name="email" [(ngModel)]="userModel.email" style="color: black;">
+            <div *ngIf="email.errors && (email.invalid && email.touched)">
+                <small class="text-danger" *ngIf="email.errors['required']">An email address is required.</small>
+                <small class="text-danger" *ngIf="email.errors['pattern']">The email address must be 10 characters long.</small>
+            </div>
         </div> 
 
+        <!-- PHONE -->
         <div class="form-group">
             <label>Phone</label>
-            <input type="tel" #phone="ngModel" pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched" class="form-control" name="phone" [(ngModel)]="userModel.phone">
-        </div>
+            <input type="tel" required #phone="ngModel" pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched" 
+                class="form-control" name="phone" [(ngModel)]="userModel.phone" style="color: black;">
+            <!-- <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Phone number must included and it must be 10 digits.</small> -->
+            <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+                <small class="text-danger" *ngIf="phone.errors['required']">A phone number is required.</small>
+                <small class="text-danger" *ngIf="phone.errors['pattern']">The phone number must be 10 digits.</small>
+            </div>
+        </div><br>
 
+        <!-- INTERESTS -->
         <div class="form-group">
-            <select class="custom-select" name="topic" [(ngModel)]="userModel.topic">
-                <option value="">I am interested in</option>
+            <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value)"  #topic="ngModel" [class.is-invalid]="topicHasError && topic.touched" class="custom-select" required name="topic" [(ngModel)]="userModel.topic" style="color: black;">
+                <option value="default">I am interested in</option>
                 <option *ngFor="let topic of topics">{{ topic }}</option>
             </select>
-        </div>
+            <small class="text-danger" [class.d-none]="!topicHasError || topic.untouched">Please select an option from the drop-down menu.</small>
+        </div><br>
 
+        <!-- TIME PREFERENCE -->
         <div class="mb-3">
-            <label>Time Preference</label>
+            <label>Time Preference:</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="timePreference" value="morning" [(ngModel)]="userModel.timePreference">
                 <label class="form-check-label">Morning (9AM - 12PM)</label>
@@ -36,6 +57,7 @@
             </div>
         </div>
 
+        <!-- PROMOTIONAL OFFERINGS -->
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" name="subscribe" [(ngModel)]="userModel.subscribe">
             <label class="form-check-label">

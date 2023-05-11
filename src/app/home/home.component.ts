@@ -8,6 +8,6 @@ import { ARTISTS } from '../mock-artist';
 })
 export class HomeComponent {
 
-  artist = ARTISTS.find(artist => artist.id == 2);
+  artist = ARTISTS.find(artist => artist.id == 1);
 
 }

@@ -9,5 +9,13 @@ import { User } from '../user';
 export class CreateAccountComponent {
   topics = ['Angular', 'React', 'Vue'];
 
-  userModel = new User("", "rob@test.com", 5555555555, "", "morning", true);
+  userModel = new User("I am George Clam.", "findme@this.email", 3039407457, "default", "morning", true);
+
+  topicHasError = true;
+
+  validateTopic(value: string) {
+    value === 'default'
+      ? this.topicHasError = true
+      : this.topicHasError = false;
+  }
 }
